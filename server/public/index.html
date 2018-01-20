@@ -7,7 +7,16 @@
 </head>
 <body ng-app="galleryApp">
     <section ng-controller="GalleryController as vm">
-
+        <div>
+            <div  class="imageDiv" ng-repeat="image in vm.imageArray">
+                <img ng-src="{{image.url}}" alt="" class="image">
+                <div  ng-click="vm.flipImage(this)" ng-class="{overlay: imageClick}" class="background">
+                    <div class="text">
+                        {{image.comments}}
+                    </div>
+                </div>    
+            </div>     
+        </div>
     </section>
 </body>
 </html>
