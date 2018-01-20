@@ -7,16 +7,22 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body ng-app="galleryApp">
-    <div class="container" ng-controller="GalleryController as vm">
+    <div class="container-fluid" ng-controller="GalleryController as vm">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 imageDiv" ng-repeat="image in vm.imageArray">
-                <img ng-src="{{image.url}}"  class="img-fluid">
-                <div  ng-click="vm.flipImage(this)" ng-class="{overlay: imageClick}" class="background img-fluid">
-                    <div class="text">
-                        {{image.comments}}
-                    </div>
+            <div class="col-md-12 text-center">
+                <h1>Angular Gallery</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 imageDiv text-left" ng-repeat="image in vm.imageArray">
+                <img ng-click="vm.flipImage(this)" ng-src="{{image.url}}"  ng-class="{overlay: imageClick}"  class="img-fluid image rounded">
+                <div ng-click="vm.flipImage(this)" class="image-text" ng-class="{notHidden: !imageClick}">
+                    {{image.comments}}
                 </div>
-                <span><button ng-click="vm.likeImage(this)">Like</button> # of Likes:{{image.like_count}}</span>
+                <div class="viewsLikes">
+                    <span class="buttonLikes text-left"><button class="btn btn-info" ng-click="vm.likeImage(this)">Like</button> Likes: {{image.like_count}}</span>
+                    <span class="viewsCount">Views: 0</span>
+                </div>
             </div>     
         </div>
     </div>
