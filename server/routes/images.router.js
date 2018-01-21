@@ -15,7 +15,7 @@ router.get('/', (req,res) => {
         });
 });
 
-router.put('/:id', (req,res) => {
+router.put('/views/:id', (req,res) => {
     let queryText = `UPDATE images SET view_count = (view_count + 1) WHERE id = $1`;
     pool.query(queryText,[req.params.id])
         .then((results) => {
@@ -26,7 +26,20 @@ router.put('/:id', (req,res) => {
             console.log('error making update request', err);
             res.sendStatus(500);
         });
-})
+});
+
+router.put('/likes/:id', (req,res) => {
+    let queryText = `UPDATE images SET like_count = (like_count + 1) WHERE id = $1`;
+    pool.query(queryText,[req.params.id])
+        .then((results) => {
+            console.log('PUT results', results);
+            res.send(200);
+        })
+        .catch((err) => {
+            console.log('error making update request', err);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;
 
