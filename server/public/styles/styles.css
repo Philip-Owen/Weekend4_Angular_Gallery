@@ -1,0 +1,62 @@
+body {
+    background-color: #008CBA;
+    color: white;
+}
+
+img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1 {
+    margin-bottom: 200px;
+}
+.imageDiv{
+    margin-bottom: 20px;
+  }
+
+.image {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    display: block;
+    opacity: 1;
+    transition: .5s ease;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
+  
+.overlay {
+    opacity: 0;
+  }
+
+.notHidden {
+    visibility: hidden;
+}
+  
+.image-text {
+color: white;
+font-size: 20px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+}
+
+.viewsLikes {
+    width: 60%;
+    margin: auto;
+}
+
+.buttonLikes {
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
