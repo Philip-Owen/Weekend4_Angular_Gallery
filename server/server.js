@@ -10,5 +10,5 @@ app.use(express.static('server/public'));
 
 
 // Port Listener
-const port = 5000;
+var port = process.env.PORT || 5000;
 app.listen(port, ()=> console.log(`Server up on port: ${port}`));
