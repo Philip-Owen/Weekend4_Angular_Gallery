@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-
+// GET routes
 router.get('/:id', (req,res) => {
     let queryText = `SELECT * FROM comments WHERE image_id = $1`;
     pool.query(queryText,[req.params.id])
@@ -16,6 +16,7 @@ router.get('/:id', (req,res) => {
         });
 });
 
+// POST routes
 router.post('/', (req,res) => {
     let queryText = `INSERT INTO comments (username, comment, image_id) VALUES ($1, $2, $3)`;
     pool.query(queryText, [req.body.username, req.body.comment, req.body.image_id])
