@@ -6,16 +6,7 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
     self.commentsActive = false;
     self.commentURL;
     self.imageArray = [];
-    self.commentsArray = [
-        {
-            user: 'Tim',
-            comment: 'Cool pic'
-        },
-        {
-            user: 'Tony',
-            comment: 'You suck!'
-        }
-    ];
+    self.commentsArray = [];
     
     self.getImages = function() {
         $http.get('/images').then(function(response) {
@@ -52,10 +43,12 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
 
     self.imageComments = function(context) {
         self.commentURL = context.image.url;
-        let id = context.image.id;
-        console.log(id);
-        
+        let id = context.image.id;        
         self.commentsActive = true;
+        $http.get('/comments/' + id).then(function(response) {
+            console.log(response);
+            self.commentsArray = response.data
+        });
     }
 
     self.hideComments = function() {
