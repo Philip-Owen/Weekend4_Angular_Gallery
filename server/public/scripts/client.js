@@ -3,9 +3,19 @@ const galleryApp = angular.module('galleryApp', []);
 galleryApp.controller('GalleryController', ['$http', function($http) {
     console.log('in GalleryController');
     const self = this;
-    
+    self.commentsActive = false;
+    self.commentURL;
     self.imageArray = [];
-
+    self.commentsArray = [
+        {
+            user: 'Tim',
+            comment: 'Cool pic'
+        },
+        {
+            user: 'Tony',
+            comment: 'You suck!'
+        }
+    ];
     
     self.getImages = function() {
         $http.get('/images').then(function(response) {
@@ -39,4 +49,17 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
             self.getImages(); 
         });       
     }
+
+    self.imageComments = function(context) {
+        self.commentURL = context.image.url;
+        let id = context.image.id;
+        console.log(id);
+        
+        self.commentsActive = true;
+    }
+
+    self.hideComments = function() {
+        self.commentsActive = false;
+    }
+
 }]);
