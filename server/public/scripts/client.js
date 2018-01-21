@@ -6,8 +6,9 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
     self.commentsActive = false;
     
     self.imageArray = [];
+    self.lastImage; 
     self.commentsArray = [];
-    self.commentURL;
+    self.commentUrl;
     self.newComment = {};
     
     self.getImages = function() {
@@ -44,9 +45,10 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
     }
 
     self.imageComments = function(context) {
-        let id = context.image.id; 
+        self.lastImage= context;
+        let id = context.image.id
 
-        self.commentURL = context.image.url;
+        self.commentUrl = context.image.url;
         self.newComment.image_id = id;
         self.commentsActive = true;
        
@@ -66,9 +68,9 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
         let sendComment = comment;
 
         $http.post('/comments', sendComment).then(function(response) {
-            console.log(response);
-            self.imageComments();
-        })
+            self.newComment = {};
+            self.imageComments(self.lastImage);
+        });
 
     }
 

@@ -16,5 +16,18 @@ router.get('/:id', (req,res) => {
         });
 });
 
+router.post('/', (req,res) => {
+    let queryText = `INSERT INTO comments (username, comment, image_id) VALUES ($1, $2, $3)`;
+    pool.query(queryText, [req.body.username, req.body.comment, req.body.image_id])
+        .then((results) => {
+            console.log('insert response', results);
+            res.sendStatus(201);          
+        })
+        .catch((err) => {
+            console.log('error making insert request', err);
+            res.sendStatus(500);
+        });
+});
+
 
 module.exports = router;
