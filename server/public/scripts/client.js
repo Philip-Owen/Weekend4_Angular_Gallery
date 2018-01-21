@@ -14,6 +14,7 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
     self.getImages = function() {
         $http.get('/images').then(function(response) {
         console.log(response);
+        
         self.imageArray = response.data
     })};
     self.getImages();
@@ -50,7 +51,8 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
     self.imageComments = function(context) {
         self.lastImage= context;
         let id = context.image.id
-
+        console.log(self.lastImage);
+        
         self.commentUrl = context.image.url;
         self.newComment.image_id = id;
         self.commentsActive = true;
