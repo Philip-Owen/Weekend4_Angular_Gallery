@@ -15,9 +15,9 @@ router.get('/', (req,res) => {
         });
 });
 
-router.put('/views/:id', (req,res) => {
+router.put('/views/', (req,res) => {
     let queryText = `UPDATE images SET view_count = (view_count + 1) WHERE id = $1`;
-    pool.query(queryText,[req.params.id])
+    pool.query(queryText,[req.body.id])
         .then((results) => {
             console.log('PUT results', results);
             res.send(200);
@@ -28,9 +28,9 @@ router.put('/views/:id', (req,res) => {
         });
 });
 
-router.put('/likes/:id', (req,res) => {
+router.put('/likes', (req,res) => {
     let queryText = `UPDATE images SET like_count = (like_count + 1) WHERE id = $1`;
-    pool.query(queryText,[req.params.id])
+    pool.query(queryText,[req.body.id])
         .then((results) => {
             console.log('PUT results', results);
             res.send(200);
