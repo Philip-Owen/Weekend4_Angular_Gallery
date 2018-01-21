@@ -18,27 +18,17 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
         context.imageClick = context.imageClick === true ? false: true;
         console.log(context.imageClick);
 
-        if (!context.imageClick) {
-            console.log();
-            
+        if (context.imageClick) {
             let id = { id: context.image.id }
             let url = '/images/views';
     
             $http.put(url, id).then(function(response) {
-                self.getImages();
+                context.image.view_count += 1
             }); 
+        } else {
+            self.getImages();
         }
-
     };
-
-    function putRequest(route, context) {
-        let id = { id: context.image.id }
-        let url = '/images/' + route;
-
-        $http.put(url, id).then(function(response) {
-        }); 
-    }
-
 
     self.likeImage = function(context) {
         let id = { id: context.image.id }
