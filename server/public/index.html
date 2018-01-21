@@ -10,12 +10,12 @@
     <div class="container-fluid" ng-controller="GalleryController as vm">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h1>Angular Gallery</h1>
+                <h1>[my ng]Gallery</h1>
             </div>
         </div>
         <div  ng-show="!vm.commentsActive" ng-hide="vm.commentsActive" class="row">
             <div class="col-md-6 col-lg-4 imageDiv text-left" ng-repeat="image in vm.imageArray">
-                <img ng-click="vm.flipImage(this)" ng-src="{{image.url}}"  ng-class="{overlay: imageClick}"  class="img-fluid image rounded">
+                <img ng-click="vm.flipImage(this)" ng-src="{{image.url}}"  ng-class="{overlay: imageClick}"  class="img-thumbnail image rounded">
                 <div ng-click="vm.flipImage(this)" class="image-text" ng-class="{notHidden: !imageClick}">
                     {{image.comments}}
                 </div>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h3 ng-click="vm.hideComments()">back</h3>
-                    <img ng-src="{{vm.commentUrl}}">
+                    <img class="img-fluid" ng-src="{{vm.commentUrl}}">
                 </div>
             </div>
             <div class="row">
