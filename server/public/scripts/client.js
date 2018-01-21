@@ -23,16 +23,19 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
         console.log(context.imageClick);
 
         if (context.imageClick) {
-            let id = { id: context.image.id }
-            let url = '/images/views';
-    
-            $http.put(url, id).then(function(response) {
-                context.image.view_count += 1
-            }); 
+            increaseViewCount(context);
         } else {
             self.getImages();
         }
     };
+
+    function increaseViewCount(context) {
+        let id = { id: context.image.id }
+        let url = '/images/views';
+        $http.put(url, id).then(function(response) {
+            context.image.view_count += 1
+        }); 
+    }
 
     self.likeImage = function(context) {
         let id = { id: context.image.id }
@@ -55,6 +58,7 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
         $http.get('/comments/' + id).then(function(response) {
             console.log(response);
             self.commentsArray = response.data
+            increaseViewCount(context)
         });
     }
 
