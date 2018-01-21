@@ -5,7 +5,7 @@ const imagesRouter = require('./routes/images.router');
 const commentsRouter = require('./routes/comments.router');
 const app = express();
 
-
+// Middleware
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(express.static('server/public'));

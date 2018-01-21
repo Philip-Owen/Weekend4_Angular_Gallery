@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+
+// GET routes
 router.get('/', (req,res) => {
     let queryText = `SELECT * FROM images ORDER BY id;`;
     pool.query(queryText)
@@ -15,6 +17,7 @@ router.get('/', (req,res) => {
         });
 });
 
+// PUT routes
 router.put('/views/', (req,res) => {
     let queryText = `UPDATE images SET view_count = (view_count + 1) WHERE id = $1`;
     pool.query(queryText,[req.body.id])
