@@ -4,9 +4,11 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
     console.log('in GalleryController');
     const self = this;
     self.commentsActive = false;
-    self.commentURL;
+    
     self.imageArray = [];
     self.commentsArray = [];
+    self.commentURL;
+    self.newComment = {};
     
     self.getImages = function() {
         $http.get('/images').then(function(response) {
@@ -42,17 +44,32 @@ galleryApp.controller('GalleryController', ['$http', function($http) {
     }
 
     self.imageComments = function(context) {
+        let id = context.image.id; 
+
         self.commentURL = context.image.url;
-        let id = context.image.id;        
+        self.newComment.image_id = id;
         self.commentsActive = true;
+       
         $http.get('/comments/' + id).then(function(response) {
             console.log(response);
             self.commentsArray = response.data
         });
     }
 
+
     self.hideComments = function() {
         self.commentsActive = false;
+    }
+
+    self.postComment = function(comment) {
+        console.log(comment);
+        let sendComment = comment;
+
+        $http.post('/comments', sendComment).then(function(response) {
+            console.log(response);
+            self.imageComments();
+        })
+
     }
 
 }]);

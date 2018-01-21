@@ -38,12 +38,14 @@
                     <form>
                         <div class="form-group col-md-2 offset-md-4">
                             <label>Name</label>
-                            <input type="text" class="form-control" placeholder="User">
+                            <input type="text" class="form-control" placeholder="User" ng-model="vm.newComment.username">
                         </div>
                         <div class="form-group col-md-4 offset-md-4">
                             <label>Comments</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" ng-model="vm.newComment.comments"></textarea>
+                            <button ng-click="vm.postComment(vm.newComment)">Add Comment</button>
                         </div>
+                        
                     </form>
                     <li class="col-md-4 offset-md-4" ng-repeat="comment in vm.commentsArray">
                         {{comment.username}}: {{comment.comment}}
