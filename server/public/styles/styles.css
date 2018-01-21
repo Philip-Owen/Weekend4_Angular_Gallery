@@ -7,14 +7,30 @@ img {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-h1 {
+form {
+    margin-top: 10px;
+}
+
+li {
+    font-size: 25px;
+}
+
+footer {
+    height: 100px;
+}
+
+.main {
     margin-bottom: 200px;
 }
+
 .imageDiv{
     margin-bottom: 20px;
   }
 
 .image {
+    height: 300px;
+    width: 452px;
+    object-fit: cover;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5px;
@@ -59,4 +75,43 @@ transform: translate(-50%, -50%);
     position: relative;
     left: 0;
     bottom: 0;
+}
+
+.commentImage {
+    margin: auto;
+}
+
+.polaroid {
+    margin-bottom: 100px;
+}
+
+.strong {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.imgInfo {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.commentImage {
+    margin-bottom: 10px;
+}
+
+.commentsClick {
+    color: rgb(59, 59, 224);
+}
+
+.commentsClick:hover {
+    color: rgb(4, 4, 221);
+    text-decoration: underline;
+}
+
+#backBtn {
+    text-decoration: underline;
+}
+
+#backBtn:hover {
+    color: rgb(221, 215, 215);
 }
